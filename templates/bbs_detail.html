@@ -1,0 +1,50 @@
+{%  extends 'index.html'%}
+{% load comments %}
+
+{% block page-content %}
+<div class="contents">
+
+    <h3> {{bbs_obj.title}} </h3>
+    <br>
+   {{bbs_obj.content|safe}}
+</div>
+
+<hr>
+<div class='comments'> 
+
+    <div >
+        {% get_comment_count for bbs_obj as comment_count %}
+        <span class="glyphicon glyphicon-comment">
+        </span>
+         {{comment_count}}
+    </div>
+    <br>
+
+    
+    {#{% if user.is_authenticated%}#}
+        <form action="/sub_comment/" method="POST">
+            <textarea cols=50 rows=3 name='comment_content'></textarea>
+            <input type="hidden" name="bbs_id" value="{{bbs_obj.id}}" />
+            <br>
+            <input type="submit" value="Add comment" id="id_submit" />
+        </form>
+    {#{%else%}#}
+        {#<p>Please <a href='/login/'>Login</a> to sumbit a comment!</p>#}
+    {#{%endif%}#}   
+
+    <br>    
+    
+    {% get_comment_list for bbs_obj as comment_list %}
+     {% for comment in comment_list reversed %}
+            Anonymous posted at {{ comment.submit_date }}
+            <br>
+            {{ comment.comment }}
+            <hr>
+
+     {%endfor %}
+ 
+</div> 
+{% endblock%}
+
+
+

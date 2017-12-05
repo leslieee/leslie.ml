@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File</title>
+</head>
+<body>
+    {% extends 'index.html' %}
+    {% block page-content %}
+      <h1>Upload File</h1>
+      <form method="post" enctype="multipart/form-data">
+          {{ uf.as_p }}{{ upload_success }} 
+      <input type="submit" value="upload"/>
+      </form>
+      <br>      
+      <h4>history list</h4>
+      {% for upload in upload_list reversed %}
+        {{upload.username}} upload at {{upload.created_at}}
+        --> 
+        <a href="http://leslie.ml/{{upload.headimg}}">http://leslie.ml/{{upload.headimg}}</a>
+        {#<hr>#}
+        <br>
+      {% endfor %}
+      <br>
+    {% endblock %}
+</body>
+</html>

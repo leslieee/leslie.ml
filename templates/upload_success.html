@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File</title>
+</head>
+<body>
+    {% extends 'index.html' %}
+    {% block page-content %}
+      <h1>Upload File</h1>
+      {#<p style="background-color: lightsalmon">upload success.</p>#}
+      {#<p>user: {{username}}</p>#}
+      <br>file upload success!
+      <br>user: {{username}}
+      <p>access: <a href="http://leslie.ml/upload/{{filename}}">http://leslie.ml/upload/{{filename}}</a></p>
+
+      <br>
+      <h4>history list</h4>
+      {% for upload in upload_list reversed %}
+        {{upload.username}} upload at {{upload.created_at}}
+        -->
+        <a href="http://leslie.ml/{{upload.headimg}}">http://leslie.ml/{{upload.headimg}}</a>
+        {#<hr>#}
+        <br>
+      {% endfor %}
+      <br>
+
+    {% endblock %}
+</body>
+</html>

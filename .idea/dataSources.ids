@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Django default" uuid="f91a0433-5b34-4978-82de-4f4779d7c3e3">
+    <database-info product="MySQL" version="5.7.12" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="bbs_pro_01"/>
+      <table id="2" parent="1" name="app01_bbs"/>
+      <table id="3" parent="1" name="app01_bbs_user"/>
+      <table id="4" parent="1" name="app01_category"/>
+      <table id="5" parent="1" name="auth_group"/>
+      <table id="6" parent="1" name="auth_group_permissions"/>
+      <table id="7" parent="1" name="auth_permission"/>
+      <table id="8" parent="1" name="auth_user"/>
+      <table id="9" parent="1" name="auth_user_groups"/>
+      <table id="10" parent="1" name="auth_user_user_permissions"/>
+      <table id="11" parent="1" name="django_admin_log"/>
+      <table id="12" parent="1" name="django_comment_flags"/>
+      <table id="13" parent="1" name="django_comments"/>
+      <table id="14" parent="1" name="django_content_type"/>
+      <table id="15" parent="1" name="django_migrations"/>
+      <table id="16" parent="1" name="django_session"/>
+      <table id="17" parent="1" name="django_site"/>
+      <table id="18" parent="1" name="app01_chataccount"/>
+      <table id="19" parent="1" name="app01_chatroom"/>
+      <table id="20" parent="1" name="app01_userinfo"/>
+      <column id="21" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="22" parent="2" name="title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <column id="23" parent="2" name="summary">
+        <data-type>varchar(256)</data-type>
+      </column>
+      <column id="24" parent="2" name="content">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="25" parent="2" name="view_count">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="26" parent="2" name="ranking">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="27" parent="2" name="created_at">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="28" parent="2" name="updated_at">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="29" parent="2" name="author_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="30" parent="2" name="category_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="31" parent="2" name="app01_bbs_4f331e2f">
+        <columns>author_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="32" parent="2" name="app01_bbs_b583a629">
+        <columns>category_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="33" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="34" parent="2" name="app01_bbs_author_id_7ac02879e45a1836_fk_app01_bbs_user_id">
+        <columns>author_id</columns>
+        <ref-key>~.app01_bbs_user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="35" parent="2" name="app01_bbs_category_id_26f767b63dc6be99_fk_app01_category_id">
+        <columns>category_id</columns>
+        <ref-key>~.app01_category.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="36" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="37" parent="3" name="signature">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="38" parent="3" name="photo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="39" parent="3" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="40" parent="3" name="user_id">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="41" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="42" parent="3" name="user_id">
+        <columns>user_id</columns>
+        <underlying-index>user_id</underlying-index>
+      </key>
+      <foreign-key id="43" parent="3" name="app01_bbs_user_user_id_6b49e43f5110de45_fk_auth_user_id">
+        <columns>user_id</columns>
+        <ref-key>~.auth_user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="44" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="45" parent="4" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(32)</data-type>
+      </column>
+      <column id="46" parent="4" name="administrator_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="47" parent="4" name="app01_category_a68d6894">
+        <columns>administrator_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="48" parent="4" name="name">
+        <columns>name</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="49" parent="4" name="name">
+        <columns>name</columns>
+        <underlying-index>name</underlying-index>
+      </key>
+      <key id="50" parent="4" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="51" parent="4" name="app01_cat_administrator_id_2d9abee61633b637_fk_app01_bbs_user_id">
+        <columns>administrator_id</columns>
+        <ref-key>~.app01_bbs_user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="52" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="53" parent="5" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(80)</data-type>
+      </column>
+      <index id="54" parent="5" name="name">
+        <columns>name</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="55" parent="5" name="name">
+        <columns>name</columns>
+        <underlying-index>name</underlying-index>
+      </key>
+      <key id="56" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="57" parent="6" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="58" parent="6" name="group_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="59" parent="6" name="permission_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="60" parent="6" name="auth_group_permissions_0e939a4f">
+        <columns>group_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="61" parent="6" name="auth_group_permissions_8373b171">
+        <columns>permission_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="62" parent="6" name="group_id">
+        <columns>group_id
+permission_id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="63" parent="6" name="group_id">
+        <columns>group_id
+permission_id</columns>
+        <underlying-index>group_id</underlying-index>
+      </key>
+      <key id="64" parent="6" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="65" parent="6" name="auth_group_permission_group_id_689710a9a73b7457_fk_auth_group_id">
+        <columns>group_id</columns>
+        <ref-key>~.auth_group.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="66" parent="6" name="auth_group__permission_id_1f49ccbbdc69d2fc_fk_auth_permission_id">
+        <columns>permission_id</columns>
+        <ref-key>~.auth_permission.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="67" parent="7" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="68" parent="7" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="69" parent="7" name="content_type_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="70" parent="7" name="codename">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <index id="71" parent="7" name="auth_permission_417f1b1c">
+        <columns>content_type_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="72" parent="7" name="content_type_id">
+        <columns>content_type_id
+codename</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="73" parent="7" name="content_type_id">
+        <columns>content_type_id
+codename</columns>
+        <underlying-index>content_type_id</underlying-index>
+      </key>
+      <key id="74" parent="7" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="75" parent="7" name="auth__content_type_id_508cf46651277a81_fk_django_content_type_id">
+        <columns>content_type_id</columns>
+        <ref-key>~.django_content_type.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="76" parent="8" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="77" parent="8" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(128)</data-type>
+      </column>
+      <column id="78" parent="8" name="last_login">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="79" parent="8" name="is_superuser">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="80" parent="8" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="81" parent="8" name="first_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="82" parent="8" name="last_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="83" parent="8" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(75)</data-type>
+      </column>
+      <column id="84" parent="8" name="is_staff">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="85" parent="8" name="is_active">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="86" parent="8" name="date_joined">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <index id="87" parent="8" name="username">
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="88" parent="8" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="89" parent="8" name="username">
+        <columns>username</columns>
+        <underlying-index>username</underlying-index>
+      </key>
+      <column id="90" parent="9" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="91" parent="9" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="92" parent="9" name="group_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="93" parent="9" name="auth_user_groups_0e939a4f">
+        <columns>group_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="94" parent="9" name="auth_user_groups_e8701ad4">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="95" parent="9" name="user_id">
+        <columns>user_id
+group_id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="96" parent="9" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="97" parent="9" name="user_id">
+        <columns>user_id
+group_id</columns>
+        <underlying-index>user_id</underlying-index>
+      </key>
+      <foreign-key id="98" parent="9" name="auth_user_groups_group_id_33ac548dcf5f8e37_fk_auth_group_id">
+        <columns>group_id</columns>
+        <ref-key>~.auth_group.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="99" parent="9" name="auth_user_groups_user_id_4b5ed4ffdb8fd9b0_fk_auth_user_id">
+        <columns>user_id</columns>
+        <ref-key>~.auth_user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="100" parent="10" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="101" parent="10" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="102" parent="10" name="permission_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="103" parent="10" name="auth_user_user_permissions_8373b171">
+        <columns>permission_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="104" parent="10" name="auth_user_user_permissions_e8701ad4">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="105" parent="10" name="user_id">
+        <columns>user_id
+permission_id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="106" parent="10" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="107" parent="10" name="user_id">
+        <columns>user_id
+permission_id</columns>
+        <underlying-index>user_id</underlying-index>
+      </key>
+      <foreign-key id="108" parent="10" name="auth_user_user_permissi_user_id_7f0938558328534a_fk_auth_user_id">
+        <columns>user_id</columns>
+        <ref-key>~.auth_user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="109" parent="10" name="auth_user_u_permission_id_384b62483d7071f0_fk_auth_permission_id">
+        <columns>permission_id</columns>
+        <ref-key>~.auth_permission.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="110" parent="11" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="111" parent="11" name="action_time">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="112" parent="11" name="object_id">
+        <data-type>longtext</data-type>
+      </column>
+      <column id="113" parent="11" name="object_repr">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="114" parent="11" name="action_flag">
+        <mandatory>1</mandatory>
+        <data-type>smallint(5) unsigned</data-type>
+      </column>
+      <column id="115" parent="11" name="change_message">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="116" parent="11" name="content_type_id">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="117" parent="11" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="118" parent="11" name="django_admin_log_417f1b1c">
+        <columns>content_type_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="119" parent="11" name="django_admin_log_e8701ad4">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="120" parent="11" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="121" parent="11" name="django_admin_log_user_id_52fdd58701c5f563_fk_auth_user_id">
+        <columns>user_id</columns>
+        <ref-key>~.auth_user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="122" parent="11" name="djang_content_type_id_697914295151027a_fk_django_content_type_id">
+        <columns>content_type_id</columns>
+        <ref-key>~.django_content_type.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="123" parent="12" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="124" parent="12" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="125" parent="12" name="comment_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="126" parent="12" name="flag">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)</data-type>
+      </column>
+      <column id="127" parent="12" name="flag_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <index id="128" parent="12" name="django_comment_flags_3925f323">
+        <columns>comment_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="129" parent="12" name="django_comment_flags_6340c63c">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="130" parent="12" name="django_comment_flags_9f00eb17">
+        <columns>flag</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="131" parent="12" name="user_id">
+        <columns>user_id
+comment_id
+flag</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="132" parent="12" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="133" parent="12" name="user_id">
+        <columns>user_id
+comment_id
+flag</columns>
+        <underlying-index>user_id</underlying-index>
+      </key>
+      <foreign-key id="134" parent="12" name="comment_id_refs_id_669ff450">
+        <columns>comment_id</columns>
+        <ref-key>~.django_comments.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="135" parent="13" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="136" parent="13" name="content_type_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="137" parent="13" name="object_pk">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="138" parent="13" name="site_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="139" parent="13" name="user_id">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="140" parent="13" name="user_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="141" parent="13" name="user_email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(75)</data-type>
+      </column>
+      <column id="142" parent="13" name="user_url">
+        <mandatory>1</mandatory>
+        <data-type>varchar(200)</data-type>
+      </column>
+      <column id="143" parent="13" name="comment">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="144" parent="13" name="submit_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="145" parent="13" name="ip_address">
+        <data-type>char(39)</data-type>
+      </column>
+      <column id="146" parent="13" name="is_public">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="147" parent="13" name="is_removed">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <index id="148" parent="13" name="django_comments_37ef4eb4">
+        <columns>content_type_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="149" parent="13" name="django_comments_6340c63c">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="150" parent="13" name="django_comments_99732b5c">
+        <columns>site_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="151" parent="13" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="152" parent="14" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="153" parent="14" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="154" parent="14" name="app_label">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="155" parent="14" name="model">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <index id="156" parent="14" name="django_content_type_app_label_45f3b1d93ec8c61c_uniq">
+        <columns>app_label
+model</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="157" parent="14" name="django_content_type_app_label_45f3b1d93ec8c61c_uniq">
+        <columns>app_label
+model</columns>
+        <underlying-index>django_content_type_app_label_45f3b1d93ec8c61c_uniq</underlying-index>
+      </key>
+      <key id="158" parent="14" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="159" parent="15" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="160" parent="15" name="app">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="161" parent="15" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="162" parent="15" name="applied">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <key id="163" parent="15" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="164" parent="16" name="session_key">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)</data-type>
+      </column>
+      <column id="165" parent="16" name="session_data">
+        <mandatory>1</mandatory>
+        <data-type>longtext</data-type>
+      </column>
+      <column id="166" parent="16" name="expire_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <index id="167" parent="16" name="django_session_de54fa62">
+        <columns>expire_date</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="168" parent="16" name="PRIMARY">
+        <columns>session_key</columns>
+        <primary>1</primary>
+      </key>
+      <column id="169" parent="17" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="170" parent="17" name="domain">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="171" parent="17" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <key id="172" parent="17" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="173" parent="18" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="174" parent="18" name="room_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="175" parent="18" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="176" parent="18" name="app01_chataccount_8273f993">
+        <columns>room_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="177" parent="18" name="app01_chataccount_e8701ad4">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="178" parent="18" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="179" parent="18" name="app01_chataccount_room_id_1cc704486472ae1c_fk_app01_chatroom_id">
+        <columns>room_id</columns>
+        <ref-key>~.app01_chatroom.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="180" parent="18" name="app01_chataccount_user_id_7a3e5f9ca4649034_fk_auth_user_id">
+        <columns>user_id</columns>
+        <ref-key>~.auth_user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="181" parent="19" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="182" parent="19" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <index id="183" parent="19" name="name">
+        <columns>name</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="184" parent="19" name="name">
+        <columns>name</columns>
+        <underlying-index>name</underlying-index>
+      </key>
+      <key id="185" parent="19" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="186" parent="20" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="187" parent="20" name="Name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="188" parent="20" name="Email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="189" parent="20" name="Phone">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <key id="190" parent="20" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

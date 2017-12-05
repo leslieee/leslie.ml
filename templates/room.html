@@ -1,0 +1,88 @@
+{%extends 'index.html'%}
+
+
+{%   block page-content %}
+{#    {% for item in rooms %}#}
+{#        <a href="/room/{{ item.id }}/">{{ item.name }}</a>#}
+        <div>
+            <p>当前房间:{{ roomobj.name }}</p>
+            <div>
+                <div style="float: left;width: 200px;background-color: #ffe680">
+                    <ul>
+                        {% for item in memberlist %}
+                            <li>{{ item.user.username }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div style="float: right;width: 400px;background-color: rgba(0, 0, 0, 0.09)">
+                    <div id="chatpool" style="height: 400px;width: 400px;border: 1px solid;overflow: auto">
+{#                        append进数据#}
+                    </div>
+                    <div>
+                        <textarea id="message" style="width: 350px;height: 50px"></textarea>
+                        <input type="button" onclick="SendMsg()" value="发送" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{#    {% endfor %}#}
+{%endblock%}
+
+{% block js %}
+    <script>
+        function SendMsg() {
+            var sendtime = new Date();
+{#            alert(sendtime)#}
+            var msg = $('#message').val();
+            $('#message').val("");
+            var name = "{{ user.username }}";
+            var content = '<span>'+sendtime+'</span></br><span>'+name+': '+msg+'</span></br>';
+            $('#chatpool').append(content);
+{#            $("#chatpool").scrollTop().scrollHeight()#}
+
+            var height = document.getElementById("chatpool").scrollHeight;
+            $('#chatpool').scrollTop(height);
+
+            var id = {{ user.id }}
+            var roomid = {{ roomobj.id }}
+            var data = {roomid:roomid, id:id, msg:msg, sendtime:sendtime, name:name};
+            syncrequest('/savemsg/',data,'post',null);
+        }
+
+        setInterval(function () {
+            var roomid = {{ roomobj.id }}
+            data = {roomid:roomid};
+            syncrequest('/getmsg/',data,'get',updatechatpool)
+        },2000);
+
+        function updatechatpool(arg) {
+{#            console.log(arg);#}
+            var arg = $.parseJSON(arg);
+            $('#chatpool').empty();
+            $.each(arg,function (k,v) {
+                var content = '<span>'+v[2]+'</span></br><span>'+v[3]+": "+v[1]+'</span></br>';
+                $('#chatpool').append(content);
+            })
+
+            var height = document.getElementById("chatpool").scrollHeight;
+            $('#chatpool').scrollTop(height);
+        }
+        
+        function syncrequest(url,data,type,func) {
+            $.ajax({
+                url:url,
+                data:data,
+                type:type,
+                success:func
+            })
+        }
+
+        $('#message').keyup(function (event) {
+            if(event.keyCode == 13){
+                SendMsg();
+            }
+        })
+
+    </script>
+{% endblock %}

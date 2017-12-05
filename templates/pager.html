@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+    <style type="text/css">
+        #head .title{
+            height: 80px;
+            background-color: #444444;
+        }
+        #Pageing A{
+            background-color: rgba(213, 213, 213, 0.65);
+            border: 1px solid White;
+            text-decoration: none;
+            color: #aeaeae;
+            padding: .1em .6em 2em 6em;
+        }
+        #Pageing A.selected{
+            background-color: #ffe371;
+        }
+        body{
+            font-size: .85em;
+            font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+            color: #232323;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="Pageing" style="margin: 20px">
+        {{ page }}
+    </div>
+
+</body>
+</html>
